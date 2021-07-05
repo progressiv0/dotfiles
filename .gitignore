@@ -1,2 +1,10 @@
-./.zsh/ohmyzsh
-./.zsh/zsh-completions
+.ssh
+.gnupg
+.zsh/ohmyzsh
+.zsh/zsh-completions
+
+.zsh_history
+
+.git-credentials
+.gitconfig
+
