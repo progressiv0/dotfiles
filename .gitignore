@@ -1,8 +1,10 @@
 .ssh
 .gnupg
+
+.vim/bundle
+
 .zsh/ohmyzsh
 .zsh/zsh-completions
-
 .zsh_history
 
 .git-credentials

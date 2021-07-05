@@ -1,5 +1,7 @@
+!/bin/bash
+
+DOTFILE_DIR="$( cd -- "$(dirname "$0")"/.. >/dev/null 2>&1 ; pwd -P )"
+
 if [ ! -n "~/.zshrc" ]; then
-  ln -s ~/.dotfiles/.zshrc ~/.zshrc
+  ln -s $DOTFILE_DIR/.zshrc ~/.zshrc
 fi
-chmod 644 ~/.dotfiles/.zshrc
-# chmod 644 ~/.dotfiles/.zsh/zsh-completions/src/*

@@ -36,6 +36,7 @@ git_arrow_customization () {
 FPATH=~/.dotfiles/.zsh/zsh-completions/src:$FPATH
 autoload -Uz compinit
 compinit
+zstyle ':completion:*' menu select
 
 # Bindings
 ## History reverse/forward search with arrow keys
