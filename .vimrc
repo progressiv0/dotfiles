@@ -16,7 +16,6 @@ Plugin 'itchyny/lightline.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 " Turn on syntax highlighting
 syntax on
@@ -65,8 +64,8 @@ nnoremap / /\v
 vnoremap / /\v
 set hlsearch
 set incsearch
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 " Remap help key.

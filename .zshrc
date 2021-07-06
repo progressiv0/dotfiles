@@ -1,4 +1,5 @@
-autoload -Uz compinit
+DOTFILE_DIR=~/.dotfiles
+#PATH=$DOTFILE_DIR/dotfunctions:$FPATH
 
 # PROMPT Styling
 PROMPT='%B%(?.%F{022}√.%F{red}?%?)%f%b|%F{026}%B%~%b%f${vcs_info_msg_0_}${dir_status} '
@@ -10,6 +11,7 @@ unsetopt BEEP
 # git plugin support
 autoload -Uz vcs_info
 autoload -U add-zsh-hook
+autoload -Uz compinit
 add-zsh-hook precmd git_arrow_customization
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -32,11 +34,19 @@ git_arrow_customization () {
   fi
 }
 
-# Autocomplete
-FPATH=~/.dotfiles/.zsh/zsh-completions/src:$FPATH
-autoload -Uz compinit
 compinit
+
+# Autocomplete
+FPATH=$DOTFILE_DIR/.zsh/zsh-completions/src:$FPATH
 zstyle ':completion:*' menu select
+
+# LS Colors
+#source $DOTFILE_DIR/.zsh/ls-colors/ls-colors.zsh my-lscolors fmt
+#zstyle $pattern list-colors ${(s[:])LS_COLORS} '*.ext=1'
+export CLICOLOR=1
+# https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 
 # Bindings
 ## History reverse/forward search with arrow keys
@@ -44,11 +54,20 @@ bindkey "^[[A" history-beginning-search-backward # Up
 bindkey "^[[B" history-beginning-search-forward # Down
 
 # Aliases
-alias ls="ls -la"
-
+alias la="ls -Gla"
+alias ll="ls -Gl"
+alias ls="ls -G"
+alias git-pullsub="git_pull_subdir"
+alias zsh-reload="source ~/.zshrc"
 
 # SSH Agent add files
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
     ssh-add ~/.ssh/git_id_rsa20210616
 fi
+
+git_pull_subdir()
+{
+  SUB_DIR_DEPTH=1
+  find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;
+

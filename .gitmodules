@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".zsh/ls-colors"]
+	path = .zsh/ls-colors
+	url = git://github.com/xPMo/zsh-ls-colors.git
