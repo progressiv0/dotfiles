@@ -57,8 +57,12 @@ bindkey "^[[B" history-beginning-search-forward # Down
 alias la="ls -Gla"
 alias ll="ls -Gl"
 alias ls="ls -G"
-alias git-pullsub="git_pull_subdir"
-alias zsh-reload="source ~/.zshrc"
+alias gitpullsub="git_pull_subdir"
+alias zshreload="source ~/.zshrc"
+alias zshedit="vim ~/.zshrc"
+alias cdtui="cd ~/Development/source.tui"
+
+# alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
 
 # SSH Agent add files
 if [ -z "$SSH_AUTH_SOCK" ] ; then
@@ -70,4 +74,4 @@ git_pull_subdir()
 {
   SUB_DIR_DEPTH=1
   find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;
-
+}

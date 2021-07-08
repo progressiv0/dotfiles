@@ -25,8 +25,8 @@ filetype plugin indent on
 " let mapleader = ","
 " Security
 set modelines=0
-" Show line numbers
-set number
+" Show line relativenumbers
+set relativenumber
 " Show file stats
 set ruler
 " Blink cursor on error instead of beeping (grr)
@@ -72,6 +72,8 @@ map <leader><space> :let @/=''<cr> " clear search
 inoremap <F1> <ESC>:set invfullscreen<CR>a
 nnoremap <F1> :set invfullscreen<CR>
 vnoremap <F1> :set invfullscreen<CR>
+nnoremap <F2> :set relativenumber! \| :set paste!<CR>
+
 " Textmate holdouts
 " Formatting
 map <leader>q gqip
