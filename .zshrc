@@ -64,14 +64,11 @@ alias cdtui="cd ~/Development/source.tui"
 
 # alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
 
-# SSH Agent add files
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent -s`
-    ssh-add ~/.ssh/git_id_rsa20210616
-fi
-
 git_pull_subdir()
 {
   SUB_DIR_DEPTH=1
   find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;
 }
+
+# Run custom configFile
+sh $DOTFILE_DIR/.customconfig

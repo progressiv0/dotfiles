@@ -1,6 +1,8 @@
 .ssh
 .gnupg
 
+.customconfig
+
 .git-credentials
 .gitconfig
 
