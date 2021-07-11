@@ -7,6 +7,11 @@ PROMPT='%B%(?.%F{022}√.%F{red}?%?)%f%b|%F{026}%B%~%b%f${vcs_info_msg_0_}${dir_
 # ZSH settings
 ## Turn of Beeps
 unsetopt BEEP
+## Preserve History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt INC_APPEND_HISTORY_TIME
 
 # git plugin support
 autoload -Uz vcs_info
@@ -50,8 +55,22 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Bindings
 ## History reverse/forward search with arrow keys
-bindkey "^[[A" history-beginning-search-backward # Up
-bindkey "^[[B" history-beginning-search-forward # Down
+key=(
+   BackSpace  "${terminfo[kbs]}"
+    Home       "${terminfo[khome]}"
+    End        "${terminfo[kend]}"
+    Insert     "${terminfo[kich1]}"
+    Delete     "${terminfo[kdch1]}"
+    Up         "${terminfo[kcuu1]}"
+    Down       "${terminfo[kcud1]}"
+    Left       "${terminfo[kcub1]}"
+    Right      "${terminfo[kcuf1]}"
+    PageUp     "${terminfo[kpp]}"
+    PageDown   "${terminfo[knp]}"
+)
+
+bindkey "$key[Up]" history-beginning-search-backward # Up
+bindkey "$key[Down]" history-beginning-search-forward # Down
 
 # Aliases
 alias la="ls -Gla"
@@ -71,4 +90,4 @@ git_pull_subdir()
 }
 
 # Run custom configFile
-sh $DOTFILE_DIR/.customconfig
+if [ -f $DOTFILE_DIR/.customvonfig ]; then sh $DOTFILE_DIR/.customconfig; fi
