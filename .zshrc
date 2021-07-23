@@ -2,7 +2,14 @@ DOTFILE_DIR=~/.dotfiles
 #PATH=$DOTFILE_DIR/dotfunctions:$FPATH
 
 # PROMPT Styling
-PROMPT='%B%(?.%F{022}√.%F{red}?%?)%f%b|%F{026}%B%~%b%f${vcs_info_msg_0_}${dir_status} '
+setopt PROMPT_SUBST
+SH_ERR='%(?.%F{022}√.%F{red}?%?)%f'
+SH_TIME='%F{190}[%*]%f'
+SH_ID='%F{123}%n%f@%F{156}%m%f'
+PROMPT1='${SH_TIME} | ${SH_ID} | ${SH_ERR} %~'
+PROMPT2='> '
+PROMPT="${PROMPT1}%2{"$'\n'"%}${PROMPT2}"
+# RPROMPT='${SH_ERR}'
 
 # ZSH settings
 ## Turn of Beeps
@@ -11,13 +18,14 @@ unsetopt BEEP
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
 
 # git plugin support
 autoload -Uz vcs_info
 autoload -U add-zsh-hook
 autoload -Uz compinit
-add-zsh-hook precmd git_arrow_customization
+add-zsh-hook precmd git_arrow
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
@@ -26,16 +34,16 @@ zstyle ':vcs_info:git*:*' get-revision true
 zstyle ':vcs_info:git*:*' check-for-changes true
 zstyle ':vcs_info:git*' formats "$r %F{9}(%b)%f"
 
-git_arrow_customization () {
+git_arrow() {
   vcs_info
   if [ -z "${vcs_info_msg_0_}" ]; then
     dir_status="%F{2}>%f"
   elif [[ -n "$(git diff --cached --name-status 2>/dev/null )" ]]; then
-    dir_status="%F{1}▶%f"
+    dir_status="%F{1}(${vcs_info_msg_0_}) ▶%f"
   elif [[ -n "$(git diff --name-status 2>/dev/null )" ]]; then
-    dir_status="%F{3}▶%f"
+    dir_status="%F{3}(${vcs_info_msg_0_}) ▶%f"
   else
-    dir_status="%F{2}▶%f"
+    dir_status="%F{2}(${vcs_info_msg_0_}) ▶%f"
   fi
 }
 
@@ -77,9 +85,16 @@ alias la="ls -Gla"
 alias ll="ls -Gl"
 alias ls="ls -G"
 alias gitpullsub="git_pull_subdir"
+alias dcc="docker-compose"
+alias dcex="docker-compose exec"
+alias dclo="docker-compose logs --tail=200 -f"
+alias dcup="docker-compose up -d"
+alias dcre="docker-compose restart"
+alias dcst="docker-compose stop"
 alias zshreload="source ~/.zshrc"
 alias zshedit="vim ~/.zshrc"
 alias cdtui="cd ~/Development/source.tui"
+alias cdmailcow="cd /opt/dockerimages/mailcow-dockerized"
 
 # alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
 
@@ -90,4 +105,4 @@ git_pull_subdir()
 }
 
 # Run custom configFile
-if [ -f $DOTFILE_DIR/.customvonfig ]; then sh $DOTFILE_DIR/.customconfig; fi
+if [ -f $DOTFILE_DIR/.customconfig ]; then sh $DOTFILE_DIR/.customconfig; fi
