@@ -26,7 +26,6 @@ time_symbol_func() {
     echo "☠"
   fi
 }
-add-zsh-hook precmd time_symbol_func 
 
 # ZSH settings
 ## Turn of Beeps
@@ -35,8 +34,8 @@ unsetopt BEEP
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt SHARE_HISTORY
 setopt APPEND_HISTORY
+setopt SHARE_HISTORY
 
 # git plugin support
 #prompt_chpwd+=( vcs_info; FORCE_RUN_VCS_INFO=1; )
