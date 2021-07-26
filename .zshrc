@@ -6,26 +6,28 @@ DOTFILE_DIR=~/.dotfiles
 
 # PROMPT Styling
 setopt PROMPT_SUBST
-SH_ERR='%{%(?..%F{1}?%?)%f%}'
-SH_TIME='%F{190}[%*]%f$(time_symbol_func)'
-SH_ID='%{%(!.%F{160}.%F{123})%n%f}%F{212}@%F{156}%m%f'
+newline=$'\n'
+SH_ERR='%(?..%F{1}?%?)%f'
+SH_TIME='%F{190}[%*]%f${time_symbol}'
+SH_ID='%(!.%F{160}.%F{123})%n%f%F{212}@%F{156}%m%f'
 SH_DIR='%F{10}%~%f'
 PROMPT1='%K{17}'"${SH_TIME}"'|${SH_ID}|${git_dir_status}${SH_DIR}%k'
 PROMPT2='${SH_ERR}> '
-PS1="${PROMPT1}"$'\n'"${PROMPT2}"
+PS1="${PROMPT1}${newline}${PROMPT2}"
 #RPROMPT='${SH_ERR}'
 time_symbol_func() {
   current_time=$(date +%H:%M)
-  if [[ "$current_time" > "07:00" ]] && [[ "$current_time" < "12:00" ]]; then
-    echo "☕"
-  elif [[ "$current_time" < "15:30" ]]; then
-    echo "⏳"
-  elif [[ "$current_time" < "22:00" ]]; then
-    echo "☯"
+  if [[ "$current_time" > "07:00" ]] && [[ "$current_time" < "11:59" ]]; then
+    time_symbol="☕"
+  elif [[ "$current_time" > "12:00" ]] && [[ "$current_time" < "15:29" ]]; then
+    time_symbol="⏳"
+  elif [[ "$current_time" > "15:30" ]] && [[ "$current_time" < "21:59" ]]; then
+    time_symbol="☯"
   else
-    echo "☠"
+    time_symbol="☠"
   fi
 }
+add-zsh-hook precmd time_symbol_func
 
 # ZSH settings
 ## Turn of Beeps
@@ -46,7 +48,7 @@ zstyle ':vcs_info:git*:*' check-for-changes true
 zstyle ':vcs_info:git*' formats "$r (%b)"
 
 git_status_func() {
-  echo "status func"
+#  echo "status func"
   if [ -z "${vcs_info_msg_0_}" ]; then
     git_dir_status="" # not a git dir
     git_dir_symbol=""
@@ -123,3 +125,4 @@ git_pull_subdir()
 # Run custom configFile
 if [ -f $DOTFILE_DIR/.customconfig ]; then sh $DOTFILE_DIR/.customconfig; fi
 compinit
+. "/home/mphama/.acme.sh/acme.sh.env"
