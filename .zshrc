@@ -98,8 +98,9 @@ bindkey "$key[Up]" history-beginning-search-backward # Up
 bindkey "$key[Down]" history-beginning-search-forward # Down
 
 # Aliases
-if [ ls --color=auto &> /dev/null ]; then
-  $colorauto=' --color=auto' # make it osx compatible
+colorauto=''
+if ls --color=auto >> /dev/null 2>&1; then
+  colorauto=' --color=auto' # make it osx compatible
 fi
 alias la="ls -Gla${colorauto}"
 alias ll="ls -Gl${colorauto}"
@@ -116,6 +117,8 @@ alias zshedit="vim ~/.zshrc; zshreload;"
 alias cdtui="cd ~/Development/source.tui"
 alias cdmailcow="cd /opt/dockerimages/mailcow-dockerized"
 alias suroot='sudo su -c zsh'
+if nvim >> /dev/null 2>&1; then
+  alias vim='nvim'; fi
 
 # alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
 
