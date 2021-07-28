@@ -98,9 +98,12 @@ bindkey "$key[Up]" history-beginning-search-backward # Up
 bindkey "$key[Down]" history-beginning-search-forward # Down
 
 # Aliases
-alias la="ls -la --color=auto"
-alias ll="ls -l --color=auto"
-alias ls="ls --color=auto"
+if [ ls --color=auto &> /dev/null ]; then
+  $colorauto=' --color=auto' # make it osx compatible
+fi
+alias la="ls -Gla${colorauto}"
+alias ll="ls -Gl${colorauto}"
+alias ls="ls -G${colorauto}"
 alias gitpullsub="git_pull_subdir"
 alias dcc="docker-compose"
 alias dcex="docker-compose exec"
