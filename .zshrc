@@ -118,8 +118,8 @@ alias cdtui="cd ~/Development/source.tui"
 alias cdmailcow="cd /opt/dockerimages/mailcow-dockerized"
 alias suroot='sudo su -c zsh'
 alias gitcc='git add .; git commit -m "changes"'
-if nvim >> /dev/null 2>&1; then
-  alias vim='nvim';
+if command -v nvim >> /dev/null 2>&1; then
+  alias vim='nvim'
 fi
 
 # alias aws="docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli"
