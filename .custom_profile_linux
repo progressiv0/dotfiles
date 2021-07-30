@@ -17,6 +17,6 @@ bindkey "$key[Down]" history-beginning-search-forward # Down
 
 alias la="ls -la --color=auto"
 alias ll="ls -l --color=auto"
-alias ls="ls - --color=auto"
+alias ls="ls --color=auto"
 
 . "/home/mphama/.acme.sh/acme.sh.env"
