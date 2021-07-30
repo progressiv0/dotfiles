@@ -4,6 +4,16 @@ autoload -Uz compinit
 DOTFILE_DIR=~/.dotfiles
 #PATH=$DOTFILE_DIR/dotfunctions:$FPATH
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     source .custom_profile_linux;;
+    Darwin*)    source .custom_profile_osx;;
+#    CYGWIN*)    machine=Cygwin;;
+#    MINGW*)     machine=MinGw;;
+    *)          echo "Unknown machine"
+esac
+
+
 # PROMPT Styling
 setopt PROMPT_SUBST
 newline=$'\n'
@@ -80,31 +90,9 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Bindings
 ## History reverse/forward search with arrow keys
-key=(
-   BackSpace  "${terminfo[kbs]}"
-    Home       "${terminfo[khome]}"
-    End        "${terminfo[kend]}"
-    Insert     "${terminfo[kich1]}"
-    Delete     "${terminfo[kdch1]}"
-    Up         "${terminfo[kcuu1]}"
-    Down       "${terminfo[kcud1]}"
-    Left       "${terminfo[kcub1]}"
-    Right      "${terminfo[kcuf1]}"
-    PageUp     "${terminfo[kpp]}"
-    PageDown   "${terminfo[knp]}"
-)
 
-bindkey "$key[Up]" history-beginning-search-backward # Up
-bindkey "$key[Down]" history-beginning-search-forward # Down
 
 # Aliases
-colorauto=''
-if ls --color=auto >> /dev/null 2>&1; then
-  colorauto=' --color=auto' # make it osx compatible
-fi
-alias la="ls -Gla${colorauto}"
-alias ll="ls -Gl${colorauto}"
-alias ls="ls -G${colorauto}"
 alias gitpullsub="git_pull_subdir"
 alias dcc="docker-compose"
 alias dcex="docker-compose exec"
@@ -133,4 +121,3 @@ git_pull_subdir()
 # Run custom configFile
 if [ -f $DOTFILE_DIR/.customconfig ]; then sh $DOTFILE_DIR/.customconfig; fi
 compinit
-. "/home/mphama/.acme.sh/acme.sh.env"

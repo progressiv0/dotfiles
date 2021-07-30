@@ -1,0 +1,16 @@
+key=(
+    Up         "\e[A"
+    Down       "\e[B"
+    Left       "\e[D"
+    Right      "\e[C"
+)
+
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+bindkey "$key[Up]" history-search-backward
+bindkey "$key[Down]" history-search-forward
+
+alias la="ls -Gla"
+alias ll="ls -Gl"
+alias ls="ls -G"
