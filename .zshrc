@@ -6,8 +6,8 @@ DOTFILE_DIR=~/.dotfiles
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     source .custom_profile_linux;;
-    Darwin*)    source .custom_profile_osx;;
+    Linux*)     source $DOTFILE_DIR/.custom_profile_linux;;
+    Darwin*)    source $DOTFILE_DIR/.custom_profile_osx;;
 #    CYGWIN*)    machine=Cygwin;;
 #    MINGW*)     machine=MinGw;;
     *)          echo "Unknown machine"

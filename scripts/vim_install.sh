@@ -31,6 +31,17 @@ if ! [ -f ~/.vimrc ]; then
   ln -s $DOTFILE_DIR/.vimrc ~/.vimrc
 fi
 
+VIM_DIR=~/.vim
+if [ -d $VIM_DIR ] && ! [ -L $VIM_DIR ]; then
+  echo "folder $VIM_DIR already exists, move folder to ${$VIM_DIR}BACKUP"
+  mv $VIM_DIR ~/.vimBACKUP
+fi
+
+if ! [ -d $VIM_DIR ]; then
+  echo "Link $VIM_DIR"
+  ln -s $DOTFILE_DIR/.vim $VIM_DIR
+fi
+
 echo "Install vim plugins"
 vim -c "PluginInstall" -c "q!" -c "q!"
 
