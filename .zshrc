@@ -120,5 +120,5 @@ git_pull_subdir()
 }
 
 # Run custom configFile
-if [ -f $DOTFILE_DIR/.customconfig ]; then sh $DOTFILE_DIR/.customconfig; fi
+if [ -f $DOTFILE_DIR/.custom_profile ]; then sh $DOTFILE_DIR/.custom_profile; fi
 compinit
