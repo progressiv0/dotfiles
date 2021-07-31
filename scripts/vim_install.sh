@@ -13,6 +13,10 @@ if command -v nvim &> /dev/null; then
   fi
 
   if ! [ -d $NVIM_DIR ]; then
+	  if ! [ -d ~/.config ]; then
+	    echo "Create ~/.config dir"
+	    mkdir ~/.config
+	  fi
     echo "Link $NVIM_DIR"
     ln -s $DOTFILE_DIR/.config/nvim $NVIM_DIR
   fi
