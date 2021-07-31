@@ -106,6 +106,7 @@ alias cdtui="cd ~/Development/source.tui"
 alias cdmailcow="cd /opt/dockerimages/mailcow-dockerized"
 alias suroot='sudo su -c zsh'
 alias gitcc='git add .; git commit -m "changes"'
+alias gitccp='git add .; git commit -m "changes"; git push;'
 if command -v nvim >> /dev/null 2>&1; then
   alias vim='nvim'
 fi
