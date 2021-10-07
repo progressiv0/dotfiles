@@ -14,3 +14,7 @@ bindkey "$key[Down]" history-search-forward
 alias la="ls -Gla"
 alias ll="ls -Gl"
 alias ls="ls -G"
+
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
