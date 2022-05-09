@@ -129,3 +129,4 @@ source $DOTFILE_DIR/.custom_profile
 if command -v neofetch >> /dev/null 2>&1; then
   neofetch
 fi
+export PATH="/usr/local/opt/binutils/bin:$PATH"
