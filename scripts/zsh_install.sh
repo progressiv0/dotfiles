@@ -7,8 +7,8 @@ if [ ! -f ~/.zshrc ]; then
   ln -s $DOTFILE_DIR/.zshrc ~/.zshrc
 fi
 
-if [ ! -f $DOTFILE_DIR/.customconfig ]; then
-  echo "Create .customconfig for specific non-global customization"
-  echo "#!bin/bash" >> $DOTFILE_DIR/.customconfig
+if [ ! -f $DOTFILE_DIR/.custom_profile ]; then
+  echo "Create .custom_profile for specific non-global customization"
+  echo "#!bin/bash" >> $DOTFILE_DIR/.custom_profile
 fi
 

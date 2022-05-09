@@ -18,3 +18,11 @@ bindkey "$key[Down]" history-beginning-search-forward # Down
 alias la="ls -la --color=auto"
 alias ll="ls -l --color=auto"
 alias ls="ls --color=auto"
+alias java-version="sudo update-alternatives --config java"
+alias apt="sudo apt"
+alias docker="sudo docker"
+alias docker-compose="sudo docker-compose"
+
+if command -v setxkbmap >> /dev/null 2>&1; then
+  /usr/bin/setxkbmap -option "caps:swapescape";
+fi
