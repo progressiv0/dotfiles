@@ -13,6 +13,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'andymass/vim-matchup'
+" Plugin 'agentlewis/vim-dvorak'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -93,3 +95,5 @@ syntax enable
 colorscheme tender
 " Add lightline ColorScheme
 let g:lightline = { 'colorscheme': 'tender' }
+
+" silent! source "$HOME/.vim/bundle/vim-dvorak/plugin/dvorak.vim"

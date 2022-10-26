@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".vim/bundle/vim-matchup"]
+  path = .vim/bundle/vim-matchup
+  url = https://github.com/andymass/vim-matchup.git
