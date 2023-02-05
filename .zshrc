@@ -40,6 +40,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 
 # git plugin support
 #prompt_chpwd+=( vcs_info; FORCE_RUN_VCS_INFO=1; )
@@ -124,8 +125,3 @@ case "${unameOut}" in
     *)          echo "Unknown machine"
 esac
 source $DOTFILE_DIR/.custom_profile
-
-# startup command
-if command -v neofetch >> /dev/null 2>&1; then
-  neofetch
-fi
