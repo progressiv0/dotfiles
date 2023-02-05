@@ -124,4 +124,3 @@ case "${unameOut}" in
 #    MINGW*)     machine=MinGw;;
     *)          echo "Unknown machine"
 esac
-source $DOTFILE_DIR/.custom_profile
