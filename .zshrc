@@ -120,7 +120,8 @@ unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     source $DOTFILE_DIR/.custom_profile_linux;;
     Darwin*)    source $DOTFILE_DIR/.custom_profile_osx;;
-#    CYGWIN*)    machine=Cygwin;;
-#    MINGW*)     machine=MinGw;;
+    CYGWIN*)    source $DOTFILE_DIR/.custom_profile_win_linux;;
+    MINGW*)     source $DOTFILE_DIR/.custom_profile_win_linux;;
+    MSYS*)      source $DOTFILE_DIR/.custom_profile_win_linux;;
     *)          echo "Unknown machine"
 esac
