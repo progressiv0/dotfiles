@@ -14,8 +14,22 @@ bindkey "$key[Down]" history-search-forward
 alias la="ls -Gla"
 alias ll="ls -Gl"
 alias ls="ls -G"
+alias kb_disable="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
+alias kb_enable="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
+export PATH="$RD/lima/bin:$PATH"
+export RD="/Applications/Rancher Desktop.app/Contents/Resources/resources/darwin"
 
+alias java-version="/usr/libexec/java_home -V"
+alias java19="export JAVA_HOME=`/usr/libexec/java_home -v 19`"
+alias java19corretto="export JAVA_HOME=`/usr/libexec/java_home -v 19.0.1`"
+alias java17="export JAVA_HOME=`/usr/libexec/java_home -v 17.06`"
+alias java17corretto="export JAVA_HOME=`/usr/libexec/java_home -v 17`"
+alias java11="export JAVA_HOME=`/usr/libexec/java_home -v 11`"
+alias java11corretto="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.17`"
+alias java8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`"
+alias java8corretto="export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_362`"
