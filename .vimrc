@@ -37,7 +37,7 @@ set visualbell
 set encoding=utf-8
 " Whitespace
 set wrap
-set textwidth=79
+set textwidth=0
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
@@ -85,6 +85,13 @@ set listchars=tab:▸\ ,eol:¬
 " set list " To enable by default
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
+
+" Setup BLOCK and INSERT Cursor
+let &t_ti.="\<Esc>[1 q"
+let &t_SI.="\<Esc>[5 q"
+let &t_EI.="\<Esc>[1 q"
+let &t_te.="\<Esc>[0 q"
+
 
 " Theme
 if (has("termguicolors"))
