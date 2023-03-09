@@ -7,12 +7,10 @@
 
 # Custom files
 .custom_profile
-.vim/.netrwhist
+.netrwhist
 .viminfo
 .zsh_history
 .zsh_sessions
-
-.config/nvim/.netrwhist
 
 # Git configs
 .git-credentials
