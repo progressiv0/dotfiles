@@ -1,20 +1,24 @@
-.DS_Store
-
+# Own stuff
 .ssh
 .gnupg
 
-.config/nvim/.netrwhist
+# OS specific files
+.DS_Store
 
+# Custom files
 .custom_profile
+.netrwhist
+.viminfo
+.zsh_history
+.zsh_sessions
 
+# Git configs
 .git-credentials
 .gitconfig
 
-.vim/.netrwhist
-.vim/bundle
-.viminfo
-
-.zsh_history
-.zsh_sessions
-.zsh/ohmyzsh
-.zsh/zsh-completions
+# Submodules
+.vim/bundle/**
+.zsh/ohmyzsh/
+.zsh/ohmyzsh/**
+.zsh/zsh-completions/
+.zsh/zsh-completions/**

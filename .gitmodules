@@ -1,9 +1,16 @@
 [submodule ".zsh/zsh-completions"]
 	path = .zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+	branch = master
 [submodule ".zsh/ohmyzsh"]
 	path = .zsh/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+	branch = master
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+	branch = master
+[submodule ".vim/bundle/vim-matchup"]
+	path = .vim/bundle/vim-matchup
+	url = https://github.com/andymass/vim-matchup.git
+	branch = master

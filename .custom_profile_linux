@@ -29,3 +29,9 @@ alias docker-compose="sudo docker-compose"
 if command -v setxkbmap >> /dev/null 2>&1; then
   /usr/bin/setxkbmap -option "caps:swapescape";
 fi
+
+# startup command
+if command -v neofetch >> /dev/null 2>&1; then
+  neofetch
+fi
+PATH="$HOME/.local/bin:$PATH"
