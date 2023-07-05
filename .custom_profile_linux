@@ -2,21 +2,21 @@ LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
 key=(
-   BackSpace  "${terminfo[kbs]}"
-    Home       "${terminfo[khome]}"
-    End        "${terminfo[kend]}"
-    Insert     "${terminfo[kich1]}"
-    Delete     "${terminfo[kdch1]}"
-    Up         "${terminfo[kcuu1]}"
-    Down       "${terminfo[kcud1]}"
-    Left       "${terminfo[kcub1]}"
-    Right      "${terminfo[kcuf1]}"
-    PageUp     "${terminfo[kpp]}"
-    PageDown   "${terminfo[knp]}"
+  BackSpace  "${terminfo[kbs]}"
+  Home       "${terminfo[khome]}"
+  End        "${terminfo[kend]}"
+  Insert     "${terminfo[kich1]}"
+  Delete     "${terminfo[kdch1]}"
+  Up         "${terminfo[kcuu1]}"
+  Down       "${terminfo[kcud1]}"
+  Left       "${terminfo[kcub1]}"
+  Right      "${terminfo[kcuf1]}"
+  PageUp     "${terminfo[kpp]}"
+  PageDown   "${terminfo[knp]}"
 )
 
-bindkey "$key[Up]" history-beginning-search-backward # Up
-bindkey "$key[Down]" history-beginning-search-forward # Down
+bindkey "^[[A" history-beginning-search-backward # Up
+bindkey "^[[B" history-beginning-search-forward # Down
 
 alias la="ls -la --color=auto"
 alias ll="ls -l --color=auto"
@@ -25,13 +25,25 @@ alias java-version="sudo update-alternatives --config java"
 alias apt="sudo apt"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
-
-if command -v setxkbmap >> /dev/null 2>&1; then
-  /usr/bin/setxkbmap -option "caps:swapescape";
-fi
+alias key_swap_esc="swapEsc"
+alias key_unswap_esc="unswapEsc"
 
 # startup command
 if command -v neofetch >> /dev/null 2>&1; then
   neofetch
 fi
 PATH="$HOME/.local/bin:$PATH"
+
+function swapEsc() 
+{
+  if command -v setxkbmap >> /dev/null 2>&1; then
+   /usr/bin/setxkbmap -option "caps:swapescape";
+  fi
+}
+
+function unswapEsc()
+{
+  if command -v setxkbmap >> /dev/null 2>&1; then
+    /usr/bin/setxkbmap -option;
+  fi
+}

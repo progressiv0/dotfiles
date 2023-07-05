@@ -76,6 +76,13 @@ nnoremap <F1> :set invfullscreen<CR>
 vnoremap <F1> :set invfullscreen<CR>
 nnoremap <F2> :set relativenumber! \| :set paste!<CR>
 
+" Silent version of the super user edit, sudo tee trick.
+cnoremap W!! execute 'silent! write !sudo /usr/bin/tee "%" >/dev/null' <bar> edit!
+" Talkative version of the super user edit, sudo tee trick.
+cmap w!! w !sudo /usr/bin/tee >/dev/null "%"
+
+"cnoremap w!! execute 'silent! write !SUDO_ASKPASS=`which ssh-askpass` sudo tee % >/dev/null' <bar> edit!
+
 " Textmate holdouts
 " Formatting
 map <leader>q gqip
@@ -104,3 +111,9 @@ colorscheme tender
 let g:lightline = { 'colorscheme': 'tender' }
 
 " silent! source "$HOME/.vim/bundle/vim-dvorak/plugin/dvorak.vim"
+
+" Fix for vim cursor not changing in different modes
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
