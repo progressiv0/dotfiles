@@ -86,7 +86,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 
 # Aliases
-alias gitpullsub="git_pull_subdir"
+alias gitpullsub="git pull --recurse-submodules"
 alias dcc="docker-compose"
 alias dcex="docker-compose exec"
 alias dclo="docker-compose logs --tail=200 -f"
@@ -113,7 +113,7 @@ git_pull_subdir()
 }
 
 # Run custom configFile
-if [ -f $DOTFILE_DIR/.custom_profile ]; then sh $DOTFILE_DIR/.custom_profile; fi
+if [ -f $DOTFILE_DIR/.custom_profile ]; then source $DOTFILE_DIR/.custom_profile; fi
 compinit
 
 unameOut="$(uname -s)"
@@ -125,3 +125,4 @@ case "${unameOut}" in
     MSYS*)      source $DOTFILE_DIR/.custom_profile_win_linux;;
     *)          echo "Unknown machine"
 esac
+
