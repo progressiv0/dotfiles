@@ -13,6 +13,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'andymass/vim-matchup'
+" Plugin 'agentlewis/vim-dvorak'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,7 +37,7 @@ set visualbell
 set encoding=utf-8
 " Whitespace
 set wrap
-set textwidth=79
+set textwidth=0
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
@@ -74,6 +76,13 @@ nnoremap <F1> :set invfullscreen<CR>
 vnoremap <F1> :set invfullscreen<CR>
 nnoremap <F2> :set relativenumber! \| :set paste!<CR>
 
+" Silent version of the super user edit, sudo tee trick.
+cnoremap W!! execute 'silent! write !sudo /usr/bin/tee "%" >/dev/null' <bar> edit!
+" Talkative version of the super user edit, sudo tee trick.
+cmap w!! w !sudo /usr/bin/tee >/dev/null "%"
+
+"cnoremap w!! execute 'silent! write !SUDO_ASKPASS=`which ssh-askpass` sudo tee % >/dev/null' <bar> edit!
+
 " Textmate holdouts
 " Formatting
 map <leader>q gqip
@@ -84,6 +93,13 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
+" Setup BLOCK and INSERT Cursor
+let &t_ti.="\<Esc>[1 q"
+let &t_SI.="\<Esc>[5 q"
+let &t_EI.="\<Esc>[1 q"
+let &t_te.="\<Esc>[0 q"
+
+
 " Theme
 if (has("termguicolors"))
  set termguicolors
@@ -93,3 +109,11 @@ syntax enable
 colorscheme tender
 " Add lightline ColorScheme
 let g:lightline = { 'colorscheme': 'tender' }
+
+" silent! source "$HOME/.vim/bundle/vim-dvorak/plugin/dvorak.vim"
+
+" Fix for vim cursor not changing in different modes
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"

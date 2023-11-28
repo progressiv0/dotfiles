@@ -1,0 +1,2 @@
+source $DOTFILE_DIR/.custom_profile_linux
+zstyle ':completion:*' fake-files /: '/:c'
