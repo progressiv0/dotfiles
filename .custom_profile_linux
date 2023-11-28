@@ -25,6 +25,8 @@ alias java-version="sudo update-alternatives --config java"
 alias apt="sudo apt"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
+alias iptables-show="sudo iptables -L -n --line-numbers -v"
+alias iptables-show-nat="sudo iptables -L -n -t nat --line-numbers -v"
 
 if command -v setxkbmap >> /dev/null 2>&1; then
   /usr/bin/setxkbmap -option "caps:swapescape";
