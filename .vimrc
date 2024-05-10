@@ -2,22 +2,24 @@
 set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
-" TODO: Load plugins here (pathogen or vundle)
-
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jacoborus/tender.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'andymass/vim-matchup'
-" Plugin 'agentlewis/vim-dvorak'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+call vundle#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_python_binary_path='/usr/bin/python3'
 
 " Turn on syntax highlighting
 syntax on
@@ -28,7 +30,7 @@ filetype plugin indent on
 " Security
 set modelines=0
 " Show line relativenumbers
-set relativenumber
+set number relativenumber
 " Show file stats
 set ruler
 " Blink cursor on error instead of beeping (grr)
@@ -76,6 +78,9 @@ nnoremap <F1> :set invfullscreen<CR>
 vnoremap <F1> :set invfullscreen<CR>
 nnoremap <F2> :set relativenumber! \| :set paste!<CR>
 
+" Run python autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
 " Silent version of the super user edit, sudo tee trick.
 cnoremap W!! execute 'silent! write !sudo /usr/bin/tee "%" >/dev/null' <bar> edit!
 " Talkative version of the super user edit, sudo tee trick.
@@ -93,11 +98,11 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-" Setup BLOCK and INSERT Cursor
-let &t_ti.="\<Esc>[1 q"
-let &t_SI.="\<Esc>[5 q"
-let &t_EI.="\<Esc>[1 q"
-let &t_te.="\<Esc>[0 q"
+" Fix for vim cursor not changing in different modes
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
 
 
 " Theme
@@ -106,14 +111,9 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme tender
+" colorscheme tender
 " Add lightline ColorScheme
-let g:lightline = { 'colorscheme': 'tender' }
+" let g:lightline = { 'colorscheme': 'tender' }
 
 " silent! source "$HOME/.vim/bundle/vim-dvorak/plugin/dvorak.vim"
 
-" Fix for vim cursor not changing in different modes
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
