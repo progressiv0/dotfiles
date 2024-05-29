@@ -117,3 +117,5 @@ syntax enable
 
 " silent! source "$HOME/.vim/bundle/vim-dvorak/plugin/dvorak.vim"
 
+let g:ycm_server_keep_logfiles = 1 
+let g:ycm_server_log_level = 'debug'
