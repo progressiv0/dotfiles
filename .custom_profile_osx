@@ -25,6 +25,7 @@ export PATH="$RD/lima/bin:$PATH"
 export RD="/Applications/Rancher Desktop.app/Contents/Resources/resources/darwin"
 
 alias java-version="/usr/libexec/java_home -V"
+alias java21corretto="export JAVA_HOME=`/usr/libexec/java_home -v 21`"
 alias java19="export JAVA_HOME=`/usr/libexec/java_home -v 19`"
 alias java19corretto="export JAVA_HOME=`/usr/libexec/java_home -v 19.0.1`"
 alias java17="export JAVA_HOME=`/usr/libexec/java_home -v 17.06`"
