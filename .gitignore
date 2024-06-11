@@ -6,7 +6,7 @@
 .DS_Store
 
 # Custom files
-.custom_profile
+custom_profile
 .netrwhist
 .viminfo
 .zsh_history

@@ -10,6 +10,8 @@ set completion-ignore-case on
 
 bindkey "$key[Up]" history-search-backward
 bindkey "$key[Down]" history-search-forward
+bindkey "[D" backward-word
+bindkey "[C" forward-word
 
 alias la="ls -Gla"
 alias ll="ls -Gl"

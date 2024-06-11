@@ -4,7 +4,8 @@ autoload -Uz compinit
 DOTFILE_DIR=~/.dotfiles
 #PATH=$DOTFILE_DIR/dotfunctions:$FPATH
 
-
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # PROMPT Styling
 setopt PROMPT_SUBST
@@ -113,16 +114,16 @@ git_pull_subdir()
 }
 
 # Run custom configFile
-if [ -f $DOTFILE_DIR/.custom_profile ]; then source $DOTFILE_DIR/.custom_profile; fi
+if [ -f $DOTFILE_DIR/custom_profile ]; then source $DOTFILE_DIR/custom_profile; fi
 compinit
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     source $DOTFILE_DIR/.custom_profile_linux;;
-    Darwin*)    source $DOTFILE_DIR/.custom_profile_osx;;
-    CYGWIN*)    source $DOTFILE_DIR/.custom_profile_win_linux;;
-    MINGW*)     source $DOTFILE_DIR/.custom_profile_win_linux;;
-    MSYS*)      source $DOTFILE_DIR/.custom_profile_win_linux;;
+    Linux*)     source $DOTFILE_DIR/custom_profile_linux;;
+    Darwin*)    source $DOTFILE_DIR/custom_profile_osx;;
+    CYGWIN*)    source $DOTFILE_DIR/custom_profile_win_linux;;
+    MINGW*)     source $DOTFILE_DIR/custom_profile_win_linux;;
+    MSYS*)      source $DOTFILE_DIR/custom_profile_win_linux;;
     *)          echo "Unknown machine"
 esac
 
