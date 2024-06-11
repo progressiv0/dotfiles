@@ -131,3 +131,4 @@ esac
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/Michael.Pham@tui.com/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
