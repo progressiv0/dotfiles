@@ -30,10 +30,6 @@ alias iptables-show-nat="sudo iptables -L -n -t nat --line-numbers -v"
 alias key_swap_esc="swapEsc"
 alias key_unswap_esc="unswapEsc"
 
-if command -v setxkbmap >> /dev/null 2>&1; then
-  /usr/bin/setxkbmap -option "caps:swapescape";
-fi
-
 # startup command
 if command -v neofetch >> /dev/null 2>&1; then
   neofetch
