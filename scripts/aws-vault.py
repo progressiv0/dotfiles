@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 import sys, os, subprocess
 
-accept_param = ["dev", "sit", "preprod", "prod"]
+accept_param = ["dev", "sit", "preprod", "prod", "shared"]
 param = list(sys.argv)
 aws_env =  param[1] if len(param) > 1 else ''
 file_path = '{}/.aws/credentials'.format(Path.home())
